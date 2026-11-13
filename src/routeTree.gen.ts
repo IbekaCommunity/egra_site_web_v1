@@ -12,8 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as Char123LocaleChar125RouteRouteImport } from './routes/{-$locale}/route'
-import { Route as AuthCallbackRouteImport } from './routes/auth/callback'
-import { Route as AuthSignInRouteImport } from './routes/auth/sign-in'
 import { Route as Char123LocaleChar125IndexRouteImport } from './routes/{-$locale}/index'
 import { Route as Char123LocaleChar125ActualitesRouteImport } from './routes/{-$locale}/actualites'
 import { Route as Char123LocaleChar125AdmissionsRouteImport } from './routes/{-$locale}/admissions'
@@ -37,16 +35,6 @@ const Char123LocaleChar125RouteRoute =
     path: '/{-$locale}',
     getParentRoute: () => rootRouteImport,
   } as any)
-const AuthCallbackRoute = AuthCallbackRouteImport.update({
-  id: '/auth/callback',
-  path: '/auth/callback',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthSignInRoute = AuthSignInRouteImport.update({
-  id: '/auth/sign-in',
-  path: '/auth/sign-in',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const Char123LocaleChar125IndexRoute =
   Char123LocaleChar125IndexRouteImport.update({
     id: '/',
@@ -88,8 +76,6 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/{-$locale}': typeof Char123LocaleChar125RouteRouteWithChildren
   '/about': typeof AboutRoute
-  '/auth/callback': typeof AuthCallbackRoute
-  '/auth/sign-in': typeof AuthSignInRoute
   '/{-$locale}/actualites': typeof Char123LocaleChar125ActualitesRoute
   '/{-$locale}/admissions': typeof Char123LocaleChar125AdmissionsRoute
   '/{-$locale}/contact': typeof Char123LocaleChar125ContactRoute
@@ -100,8 +86,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/auth/callback': typeof AuthCallbackRoute
-  '/auth/sign-in': typeof AuthSignInRoute
   '/{-$locale}/actualites': typeof Char123LocaleChar125ActualitesRoute
   '/{-$locale}/admissions': typeof Char123LocaleChar125AdmissionsRoute
   '/{-$locale}/contact': typeof Char123LocaleChar125ContactRoute
@@ -114,8 +98,6 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/{-$locale}': typeof Char123LocaleChar125RouteRouteWithChildren
   '/about': typeof AboutRoute
-  '/auth/callback': typeof AuthCallbackRoute
-  '/auth/sign-in': typeof AuthSignInRoute
   '/{-$locale}/actualites': typeof Char123LocaleChar125ActualitesRoute
   '/{-$locale}/admissions': typeof Char123LocaleChar125AdmissionsRoute
   '/{-$locale}/contact': typeof Char123LocaleChar125ContactRoute
@@ -129,8 +111,6 @@ export interface FileRouteTypes {
     | '/'
     | '/{-$locale}'
     | '/about'
-    | '/auth/callback'
-    | '/auth/sign-in'
     | '/{-$locale}/actualites'
     | '/{-$locale}/admissions'
     | '/{-$locale}/contact'
@@ -141,8 +121,6 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
-    | '/auth/callback'
-    | '/auth/sign-in'
     | '/{-$locale}/actualites'
     | '/{-$locale}/admissions'
     | '/{-$locale}/contact'
@@ -154,8 +132,6 @@ export interface FileRouteTypes {
     | '/'
     | '/{-$locale}'
     | '/about'
-    | '/auth/callback'
-    | '/auth/sign-in'
     | '/{-$locale}/actualites'
     | '/{-$locale}/admissions'
     | '/{-$locale}/contact'
@@ -168,8 +144,6 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   Char123LocaleChar125RouteRoute: typeof Char123LocaleChar125RouteRouteWithChildren
   AboutRoute: typeof AboutRoute
-  AuthCallbackRoute: typeof AuthCallbackRoute
-  AuthSignInRoute: typeof AuthSignInRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -193,20 +167,6 @@ declare module '@tanstack/react-router' {
       path: '/{-$locale}'
       fullPath: '/{-$locale}'
       preLoaderRoute: typeof Char123LocaleChar125RouteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth/callback': {
-      id: '/auth/callback'
-      path: '/auth/callback'
-      fullPath: '/auth/callback'
-      preLoaderRoute: typeof AuthCallbackRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth/sign-in': {
-      id: '/auth/sign-in'
-      path: '/auth/sign-in'
-      fullPath: '/auth/sign-in'
-      preLoaderRoute: typeof AuthSignInRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/{-$locale}/': {
@@ -282,8 +242,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   Char123LocaleChar125RouteRoute: Char123LocaleChar125RouteRouteWithChildren,
   AboutRoute: AboutRoute,
-  AuthCallbackRoute: AuthCallbackRoute,
-  AuthSignInRoute: AuthSignInRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
