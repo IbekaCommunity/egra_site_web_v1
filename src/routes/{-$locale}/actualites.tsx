@@ -23,7 +23,7 @@ export const Route = createFileRoute("/{-$locale}/actualites")({
   }),
   head: ({ params }) => {
     const t = getDictionary(langFromParam(params.locale)).newsPage;
-    const title = `${t.metaTitle} | EGRA International School`;
+    const title = `${t.metaTitle} | Egra International School`;
     return {
       meta: [
         { title },
