@@ -11,6 +11,15 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as Char123LocaleChar125RouteRouteImport } from './routes/{-$locale}/route'
+import { Route as AuthCallbackRouteImport } from './routes/auth/callback'
+import { Route as AuthSignInRouteImport } from './routes/auth/sign-in'
+import { Route as Char123LocaleChar125IndexRouteImport } from './routes/{-$locale}/index'
+import { Route as Char123LocaleChar125ActualitesRouteImport } from './routes/{-$locale}/actualites'
+import { Route as Char123LocaleChar125AdmissionsRouteImport } from './routes/{-$locale}/admissions'
+import { Route as Char123LocaleChar125ContactRouteImport } from './routes/{-$locale}/contact'
+import { Route as Char123LocaleChar125EcoleRouteImport } from './routes/{-$locale}/ecole'
+import { Route as Char123LocaleChar125FormationsRouteImport } from './routes/{-$locale}/formations'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +31,145 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Char123LocaleChar125RouteRoute =
+  Char123LocaleChar125RouteRouteImport.update({
+    id: '/{-$locale}',
+    path: '/{-$locale}',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AuthCallbackRoute = AuthCallbackRouteImport.update({
+  id: '/auth/callback',
+  path: '/auth/callback',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthSignInRoute = AuthSignInRouteImport.update({
+  id: '/auth/sign-in',
+  path: '/auth/sign-in',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Char123LocaleChar125IndexRoute =
+  Char123LocaleChar125IndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125ActualitesRoute =
+  Char123LocaleChar125ActualitesRouteImport.update({
+    id: '/actualites',
+    path: '/actualites',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125AdmissionsRoute =
+  Char123LocaleChar125AdmissionsRouteImport.update({
+    id: '/admissions',
+    path: '/admissions',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125ContactRoute =
+  Char123LocaleChar125ContactRouteImport.update({
+    id: '/contact',
+    path: '/contact',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125EcoleRoute =
+  Char123LocaleChar125EcoleRouteImport.update({
+    id: '/ecole',
+    path: '/ecole',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125FormationsRoute =
+  Char123LocaleChar125FormationsRouteImport.update({
+    id: '/formations',
+    path: '/formations',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/{-$locale}': typeof Char123LocaleChar125RouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/auth/callback': typeof AuthCallbackRoute
+  '/auth/sign-in': typeof AuthSignInRoute
+  '/{-$locale}/actualites': typeof Char123LocaleChar125ActualitesRoute
+  '/{-$locale}/admissions': typeof Char123LocaleChar125AdmissionsRoute
+  '/{-$locale}/contact': typeof Char123LocaleChar125ContactRoute
+  '/{-$locale}/ecole': typeof Char123LocaleChar125EcoleRoute
+  '/{-$locale}/formations': typeof Char123LocaleChar125FormationsRoute
+  '/{-$locale}/': typeof Char123LocaleChar125IndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth/callback': typeof AuthCallbackRoute
+  '/auth/sign-in': typeof AuthSignInRoute
+  '/{-$locale}/actualites': typeof Char123LocaleChar125ActualitesRoute
+  '/{-$locale}/admissions': typeof Char123LocaleChar125AdmissionsRoute
+  '/{-$locale}/contact': typeof Char123LocaleChar125ContactRoute
+  '/{-$locale}/ecole': typeof Char123LocaleChar125EcoleRoute
+  '/{-$locale}/formations': typeof Char123LocaleChar125FormationsRoute
+  '/{-$locale}': typeof Char123LocaleChar125IndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/{-$locale}': typeof Char123LocaleChar125RouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/auth/callback': typeof AuthCallbackRoute
+  '/auth/sign-in': typeof AuthSignInRoute
+  '/{-$locale}/actualites': typeof Char123LocaleChar125ActualitesRoute
+  '/{-$locale}/admissions': typeof Char123LocaleChar125AdmissionsRoute
+  '/{-$locale}/contact': typeof Char123LocaleChar125ContactRoute
+  '/{-$locale}/ecole': typeof Char123LocaleChar125EcoleRoute
+  '/{-$locale}/formations': typeof Char123LocaleChar125FormationsRoute
+  '/{-$locale}/': typeof Char123LocaleChar125IndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths:
+    | '/'
+    | '/{-$locale}'
+    | '/about'
+    | '/auth/callback'
+    | '/auth/sign-in'
+    | '/{-$locale}/actualites'
+    | '/{-$locale}/admissions'
+    | '/{-$locale}/contact'
+    | '/{-$locale}/ecole'
+    | '/{-$locale}/formations'
+    | '/{-$locale}/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to:
+    | '/'
+    | '/about'
+    | '/auth/callback'
+    | '/auth/sign-in'
+    | '/{-$locale}/actualites'
+    | '/{-$locale}/admissions'
+    | '/{-$locale}/contact'
+    | '/{-$locale}/ecole'
+    | '/{-$locale}/formations'
+    | '/{-$locale}'
+  id:
+    | '__root__'
+    | '/'
+    | '/{-$locale}'
+    | '/about'
+    | '/auth/callback'
+    | '/auth/sign-in'
+    | '/{-$locale}/actualites'
+    | '/{-$locale}/admissions'
+    | '/{-$locale}/contact'
+    | '/{-$locale}/ecole'
+    | '/{-$locale}/formations'
+    | '/{-$locale}/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  Char123LocaleChar125RouteRoute: typeof Char123LocaleChar125RouteRouteWithChildren
   AboutRoute: typeof AboutRoute
+  AuthCallbackRoute: typeof AuthCallbackRoute
+  AuthSignInRoute: typeof AuthSignInRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,22 +188,113 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/{-$locale}': {
+      id: '/{-$locale}'
+      path: '/{-$locale}'
+      fullPath: '/{-$locale}'
+      preLoaderRoute: typeof Char123LocaleChar125RouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/callback': {
+      id: '/auth/callback'
+      path: '/auth/callback'
+      fullPath: '/auth/callback'
+      preLoaderRoute: typeof AuthCallbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/sign-in': {
+      id: '/auth/sign-in'
+      path: '/auth/sign-in'
+      fullPath: '/auth/sign-in'
+      preLoaderRoute: typeof AuthSignInRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/{-$locale}/': {
+      id: '/{-$locale}/'
+      path: '/'
+      fullPath: '/{-$locale}/'
+      preLoaderRoute: typeof Char123LocaleChar125IndexRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/actualites': {
+      id: '/{-$locale}/actualites'
+      path: '/actualites'
+      fullPath: '/{-$locale}/actualites'
+      preLoaderRoute: typeof Char123LocaleChar125ActualitesRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/admissions': {
+      id: '/{-$locale}/admissions'
+      path: '/admissions'
+      fullPath: '/{-$locale}/admissions'
+      preLoaderRoute: typeof Char123LocaleChar125AdmissionsRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/contact': {
+      id: '/{-$locale}/contact'
+      path: '/contact'
+      fullPath: '/{-$locale}/contact'
+      preLoaderRoute: typeof Char123LocaleChar125ContactRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/ecole': {
+      id: '/{-$locale}/ecole'
+      path: '/ecole'
+      fullPath: '/{-$locale}/ecole'
+      preLoaderRoute: typeof Char123LocaleChar125EcoleRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/formations': {
+      id: '/{-$locale}/formations'
+      path: '/formations'
+      fullPath: '/{-$locale}/formations'
+      preLoaderRoute: typeof Char123LocaleChar125FormationsRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
   }
 }
 
+interface Char123LocaleChar125RouteRouteChildren {
+  Char123LocaleChar125ActualitesRoute: typeof Char123LocaleChar125ActualitesRoute
+  Char123LocaleChar125AdmissionsRoute: typeof Char123LocaleChar125AdmissionsRoute
+  Char123LocaleChar125ContactRoute: typeof Char123LocaleChar125ContactRoute
+  Char123LocaleChar125EcoleRoute: typeof Char123LocaleChar125EcoleRoute
+  Char123LocaleChar125FormationsRoute: typeof Char123LocaleChar125FormationsRoute
+  Char123LocaleChar125IndexRoute: typeof Char123LocaleChar125IndexRoute
+}
+
+const Char123LocaleChar125RouteRouteChildren: Char123LocaleChar125RouteRouteChildren =
+  {
+    Char123LocaleChar125ActualitesRoute: Char123LocaleChar125ActualitesRoute,
+    Char123LocaleChar125AdmissionsRoute: Char123LocaleChar125AdmissionsRoute,
+    Char123LocaleChar125ContactRoute: Char123LocaleChar125ContactRoute,
+    Char123LocaleChar125EcoleRoute: Char123LocaleChar125EcoleRoute,
+    Char123LocaleChar125FormationsRoute: Char123LocaleChar125FormationsRoute,
+    Char123LocaleChar125IndexRoute: Char123LocaleChar125IndexRoute,
+  }
+
+const Char123LocaleChar125RouteRouteWithChildren =
+  Char123LocaleChar125RouteRoute._addFileChildren(
+    Char123LocaleChar125RouteRouteChildren,
+  )
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  Char123LocaleChar125RouteRoute: Char123LocaleChar125RouteRouteWithChildren,
   AboutRoute: AboutRoute,
+  AuthCallbackRoute: AuthCallbackRoute,
+  AuthSignInRoute: AuthSignInRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
 
 import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
+import type { startInstance } from './start.ts'
 declare module '@tanstack/react-start' {
   interface Register {
     ssr: true
     router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
   }
 }
