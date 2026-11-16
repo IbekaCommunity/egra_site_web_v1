@@ -4,7 +4,7 @@
 export const INQUIRY_KINDS = ["preinscription", "message"] as const;
 export type InquiryKind = (typeof INQUIRY_KINDS)[number];
 
-export const SCHOOL_LEVELS = ["prescolaire", "primaire", "secondaire"] as const;
+export const SCHOOL_LEVELS = ["maternelle", "primaire", "secondaire"] as const;
 export type SchoolLevel = (typeof SCHOOL_LEVELS)[number];
 
 export const INQUIRY_LIMITS = {

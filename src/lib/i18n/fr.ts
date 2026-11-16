@@ -1,4 +1,4 @@
-export const NEWS_CATEGORIES = ["events", "academic", "life"] as const;
+export const NEWS_CATEGORIES = ["events", "academic", "life","technology","language","science"] as const;
 export type NewsCategory = (typeof NEWS_CATEGORIES)[number];
 
 export type NewsItem = {
@@ -29,8 +29,9 @@ export const fr = {
     school: "L'école",
     programs: "Nos formations",
     admissions: "Admissions",
-    news: "Actualités",
+    // news: "Actualités",
     contact: "Contact",
+    career:"Carrière",
     menu: "Menu",
     language: "Langue",
     parentsSpace: "Espace parents",
@@ -44,6 +45,8 @@ export const fr = {
       admissionsDesc: "Les étapes pour inscrire votre enfant chez nous.",
       fees:'Frais',
       feesDesc:'Découvrez la liste de nos frais scolaires ',
+      news:'Actualités',
+      newsDesc:'Decouvrez toute notre actualité scolaire sur notre plateforme',
       learnMore: "Découvrez l'école qui fait grandir vos enfants.",
       visit: "Visiter l'école",
     },
@@ -140,6 +143,9 @@ export const fr = {
       events: "Événements",
       academic: "Vie académique",
       life: "Vie scolaire",
+      science:"Science",
+      technology:"Technologie",
+      language:'Langue'
     },
     items: newsItems([
       {
@@ -243,7 +249,7 @@ export const fr = {
         "EGRA International School est née d'une conviction : chaque enfant mérite une éducation de niveau international, sans perdre le lien avec ses racines.",
         "Nos élèves apprennent en français et en anglais, développent leur esprit critique et leur créativité, et grandissent dans le respect des valeurs qui nous rassemblent.",
       ],
-      quote: "École • Excellence • Avenir",
+      quote: "Think Global, Learn Local",
       photoAlt: "Élèves d'EGRA lors d'une conférence",
     },
     pillars: [
@@ -314,8 +320,8 @@ export const fr = {
     subjectsLabel: "Matières et activités",
     cycles: [
       {
-        id: "prescolaire",
-        name: "Préscolaire",
+        id: "maternelle",
+        name: "Maternelle",
         ages: "3 – 5 ans",
         classes: "Petite, moyenne et grande section",
         intro:
@@ -442,7 +448,7 @@ export const fr = {
     info: {
       title: "Nos coordonnées",
       address: "Adresse",
-      addressValue: "Adresse de l'école (à compléter)",
+      addressValue: "Coin boulevard Katumbi et contournement, Plateau Karavia",
       phone: "Téléphone",
       email: "E-mail",
       hours: "Horaires du secrétariat",
@@ -457,16 +463,16 @@ export const fr = {
         message: "Posez-nous votre question, nous vous répondons dans les meilleurs délais.",
       },
       parentName: "Nom du parent ou tuteur",
-      parentNamePlaceholder: "Aminata Diallo",
+      parentNamePlaceholder: "Israel Besa",
       email: "E-mail",
       emailPlaceholder: "exemple@gmail.com",
       phone: "Téléphone",
       phonePlaceholder: "+221 77 123 45 67",
       childName: "Nom de l'enfant",
-      childNamePlaceholder: "Moussa Diallo",
+      childNamePlaceholder: "Banza monga",
       level: "Cycle souhaité",
       levelPlaceholder: "Choisir un cycle",
-      levels: { prescolaire: "Préscolaire", primaire: "Primaire", secondaire: "Secondaire" },
+      levels: { maternelle: "Préscolaire", primaire: "Primaire", secondaire: "Secondaire" },
       message: "Message",
       messageOptional: "Message (facultatif)",
       messagePlaceholder: "Classe souhaitée, questions, disponibilités pour une visite…",
@@ -493,6 +499,39 @@ export const fr = {
       },
     },
   },
+
+  careerPage:{
+    metaTitle: "Carrière au sein de Egra International School",
+    metaDescription:
+      "Postuler chez Egra International School",
+    eyebrow: "Carrière",
+    title: "Pour une carrière au sein de notre institution",
+    subtitle:
+      "Postuler chez nous en un clic via notre website, un Cv, une lettre de motivation et vous y êtes... ",
+    info: {
+      title: "Nos coordonnées",
+      address: "Adresse",
+      addressValue: "Coin boulevard Katumbi et contournement, Plateau Karavia",
+      phone: "Téléphone",
+      email: "E-mail",
+      hours: "Horaires du secrétariat",
+      hoursValue: "Du lundi au vendredi, 7h30 – 17h00",
+      parentsTitle: "Déjà parent chez EGRA ?",
+      parentsDesc: "Retrouvez les notes, absences et informations de l'école dans votre espace parents.",
+    }
+  },
+
+
+    feesPage:{
+    metaTitle: "Frais scolaires",
+    metaDescription:
+      "Decouvrez la liste de nos frais scolaire",
+    eyebrow: "Paiements des frais scolaires",
+    title: "Frais Scolaires",
+    subtitle:
+      "Decouvrez la liste de tous les frais scolaires au sein de notre etablissement!",
+    
+  }
 };
 
 export type Dictionary = typeof fr;

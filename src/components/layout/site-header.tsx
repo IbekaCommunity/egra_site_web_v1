@@ -7,6 +7,7 @@ import {
   CreditCard,
   Images,
   Menu,
+  Newspaper,
   Users,
 } from "lucide-react";
 import { useState } from "react";
@@ -39,7 +40,8 @@ const SCHOOL_ITEMS = [
   { icon: Images, key: "gallery", to: "/{-$locale}/ecole", hash: "galerie", tone: "bg-accent/30 text-accent-foreground" },
   { icon: ClipboardCheck, key: "admissions", to: "/{-$locale}/admissions", hash: undefined, tone: "bg-primary/10 text-primary" },
   { icon: CreditCard, key: "fees", to: "/{-$locale}/fees", hash: undefined, tone: "bg-primary/10 text-primary" },
-] as const satisfies ReadonlyArray<{ key: "facilities" | "gallery" | "admissions" | "fees"; to: NavTo; hash: string | undefined; icon: typeof Building2; tone: string }>;
+  { icon: Newspaper, key:"news", to:"/{-$locale}/actualites", hash:undefined, tone:"bg-primary/10 text-primary"},
+] as const satisfies ReadonlyArray<{ key: "facilities" | "gallery" | "admissions" | "fees"; to: NavTo; hash: string | "news"; to:NavTo; hash:string | undefined; icon: typeof Building2; tone: string }>;
 
 const linkBase =
   "relative py-2 text-sm font-semibold text-foreground/80 transition hover:text-primary cursor-pointer";

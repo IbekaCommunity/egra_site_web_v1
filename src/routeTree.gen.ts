@@ -9,21 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/{-$locale}/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as Char123LocaleChar125RouteRouteImport } from './routes/{-$locale}/route'
 import { Route as Char123LocaleChar125IndexRouteImport } from './routes/{-$locale}/index'
 import { Route as Char123LocaleChar125ActualitesRouteImport } from './routes/{-$locale}/actualites'
 import { Route as Char123LocaleChar125AdmissionsRouteImport } from './routes/{-$locale}/admissions'
+import { Route as Char123LocaleChar125CareerRouteImport } from './routes/{-$locale}/career'
 import { Route as Char123LocaleChar125ContactRouteImport } from './routes/{-$locale}/contact'
 import { Route as Char123LocaleChar125EcoleRouteImport } from './routes/{-$locale}/ecole'
+import { Route as Char123LocaleChar125FeesRouteImport } from './routes/{-$locale}/fees'
 import { Route as Char123LocaleChar125FormationsRouteImport } from './routes/{-$locale}/formations'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -53,6 +49,12 @@ const Char123LocaleChar125AdmissionsRoute =
     path: '/admissions',
     getParentRoute: () => Char123LocaleChar125RouteRoute,
   } as any)
+const Char123LocaleChar125CareerRoute =
+  Char123LocaleChar125CareerRouteImport.update({
+    id: '/career',
+    path: '/career',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
 const Char123LocaleChar125ContactRoute =
   Char123LocaleChar125ContactRouteImport.update({
     id: '/contact',
@@ -65,6 +67,12 @@ const Char123LocaleChar125EcoleRoute =
     path: '/ecole',
     getParentRoute: () => Char123LocaleChar125RouteRoute,
   } as any)
+const Char123LocaleChar125FeesRoute =
+  Char123LocaleChar125FeesRouteImport.update({
+    id: '/fees',
+    path: '/fees',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
 const Char123LocaleChar125FormationsRoute =
   Char123LocaleChar125FormationsRouteImport.update({
     id: '/formations',
@@ -73,88 +81,86 @@ const Char123LocaleChar125FormationsRoute =
   } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
   '/{-$locale}': typeof Char123LocaleChar125RouteRouteWithChildren
   '/about': typeof AboutRoute
   '/{-$locale}/actualites': typeof Char123LocaleChar125ActualitesRoute
   '/{-$locale}/admissions': typeof Char123LocaleChar125AdmissionsRoute
+  '/{-$locale}/career': typeof Char123LocaleChar125CareerRoute
   '/{-$locale}/contact': typeof Char123LocaleChar125ContactRoute
   '/{-$locale}/ecole': typeof Char123LocaleChar125EcoleRoute
+  '/{-$locale}/fees': typeof Char123LocaleChar125FeesRoute
   '/{-$locale}/formations': typeof Char123LocaleChar125FormationsRoute
   '/{-$locale}/': typeof Char123LocaleChar125IndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/{-$locale}/actualites': typeof Char123LocaleChar125ActualitesRoute
   '/{-$locale}/admissions': typeof Char123LocaleChar125AdmissionsRoute
+  '/{-$locale}/career': typeof Char123LocaleChar125CareerRoute
   '/{-$locale}/contact': typeof Char123LocaleChar125ContactRoute
   '/{-$locale}/ecole': typeof Char123LocaleChar125EcoleRoute
+  '/{-$locale}/fees': typeof Char123LocaleChar125FeesRoute
   '/{-$locale}/formations': typeof Char123LocaleChar125FormationsRoute
   '/{-$locale}': typeof Char123LocaleChar125IndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
   '/{-$locale}': typeof Char123LocaleChar125RouteRouteWithChildren
   '/about': typeof AboutRoute
   '/{-$locale}/actualites': typeof Char123LocaleChar125ActualitesRoute
   '/{-$locale}/admissions': typeof Char123LocaleChar125AdmissionsRoute
+  '/{-$locale}/career': typeof Char123LocaleChar125CareerRoute
   '/{-$locale}/contact': typeof Char123LocaleChar125ContactRoute
   '/{-$locale}/ecole': typeof Char123LocaleChar125EcoleRoute
+  '/{-$locale}/fees': typeof Char123LocaleChar125FeesRoute
   '/{-$locale}/formations': typeof Char123LocaleChar125FormationsRoute
   '/{-$locale}/': typeof Char123LocaleChar125IndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
     | '/{-$locale}'
     | '/about'
     | '/{-$locale}/actualites'
     | '/{-$locale}/admissions'
+    | '/{-$locale}/career'
     | '/{-$locale}/contact'
     | '/{-$locale}/ecole'
+    | '/{-$locale}/fees'
     | '/{-$locale}/formations'
     | '/{-$locale}/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
     | '/about'
     | '/{-$locale}/actualites'
     | '/{-$locale}/admissions'
+    | '/{-$locale}/career'
     | '/{-$locale}/contact'
     | '/{-$locale}/ecole'
+    | '/{-$locale}/fees'
     | '/{-$locale}/formations'
     | '/{-$locale}'
   id:
     | '__root__'
-    | '/'
     | '/{-$locale}'
     | '/about'
     | '/{-$locale}/actualites'
     | '/{-$locale}/admissions'
+    | '/{-$locale}/career'
     | '/{-$locale}/contact'
     | '/{-$locale}/ecole'
+    | '/{-$locale}/fees'
     | '/{-$locale}/formations'
     | '/{-$locale}/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
   Char123LocaleChar125RouteRoute: typeof Char123LocaleChar125RouteRouteWithChildren
   AboutRoute: typeof AboutRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -190,6 +196,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char123LocaleChar125AdmissionsRouteImport
       parentRoute: typeof Char123LocaleChar125RouteRoute
     }
+    '/{-$locale}/career': {
+      id: '/{-$locale}/career'
+      path: '/career'
+      fullPath: '/{-$locale}/career'
+      preLoaderRoute: typeof Char123LocaleChar125CareerRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
     '/{-$locale}/contact': {
       id: '/{-$locale}/contact'
       path: '/contact'
@@ -202,6 +215,13 @@ declare module '@tanstack/react-router' {
       path: '/ecole'
       fullPath: '/{-$locale}/ecole'
       preLoaderRoute: typeof Char123LocaleChar125EcoleRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/fees': {
+      id: '/{-$locale}/fees'
+      path: '/fees'
+      fullPath: '/{-$locale}/fees'
+      preLoaderRoute: typeof Char123LocaleChar125FeesRouteImport
       parentRoute: typeof Char123LocaleChar125RouteRoute
     }
     '/{-$locale}/formations': {
@@ -217,8 +237,10 @@ declare module '@tanstack/react-router' {
 interface Char123LocaleChar125RouteRouteChildren {
   Char123LocaleChar125ActualitesRoute: typeof Char123LocaleChar125ActualitesRoute
   Char123LocaleChar125AdmissionsRoute: typeof Char123LocaleChar125AdmissionsRoute
+  Char123LocaleChar125CareerRoute: typeof Char123LocaleChar125CareerRoute
   Char123LocaleChar125ContactRoute: typeof Char123LocaleChar125ContactRoute
   Char123LocaleChar125EcoleRoute: typeof Char123LocaleChar125EcoleRoute
+  Char123LocaleChar125FeesRoute: typeof Char123LocaleChar125FeesRoute
   Char123LocaleChar125FormationsRoute: typeof Char123LocaleChar125FormationsRoute
   Char123LocaleChar125IndexRoute: typeof Char123LocaleChar125IndexRoute
 }
@@ -227,8 +249,10 @@ const Char123LocaleChar125RouteRouteChildren: Char123LocaleChar125RouteRouteChil
   {
     Char123LocaleChar125ActualitesRoute: Char123LocaleChar125ActualitesRoute,
     Char123LocaleChar125AdmissionsRoute: Char123LocaleChar125AdmissionsRoute,
+    Char123LocaleChar125CareerRoute: Char123LocaleChar125CareerRoute,
     Char123LocaleChar125ContactRoute: Char123LocaleChar125ContactRoute,
     Char123LocaleChar125EcoleRoute: Char123LocaleChar125EcoleRoute,
+    Char123LocaleChar125FeesRoute: Char123LocaleChar125FeesRoute,
     Char123LocaleChar125FormationsRoute: Char123LocaleChar125FormationsRoute,
     Char123LocaleChar125IndexRoute: Char123LocaleChar125IndexRoute,
   }
@@ -239,7 +263,6 @@ const Char123LocaleChar125RouteRouteWithChildren =
   )
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
   Char123LocaleChar125RouteRoute: Char123LocaleChar125RouteRouteWithChildren,
   AboutRoute: AboutRoute,
 }

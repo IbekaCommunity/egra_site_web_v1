@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useMutation } from "convex/react";
+// import { useMutation } from "convex/react";
 import { ConvexError } from "convex/values";
 import { CheckCircle2, GraduationCap, Mail, Send } from "lucide-react";
 import { toast } from "sonner";
@@ -65,7 +65,7 @@ const inputClass = "h-11 rounded-xl bg-background";
 export default function ContactForm({ initialKind }: { initialKind: InquiryKind }) {
   const t = useT().contactPage.form;
   const lang = useLang();
-  const submit = useMutation(api.inquiries.submit);
+  // const submit = useMutation(api.inquiries.submit);
   const [sent, setSent] = useState(false);
 
   // Same rules as the server mutation, for instant feedback.

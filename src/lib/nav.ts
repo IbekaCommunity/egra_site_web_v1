@@ -2,7 +2,7 @@ import type { Dictionary } from "@/lib/i18n/index.ts";
 
 type NavKey = keyof Pick<
   Dictionary["nav"],
-  "home" | "school" | "programs" | "admissions" | "news" | "contact"
+  "home" | "school" | "programs" | "admissions" | "contact" | "career"
 >;
 
 // Every page lives under the optional `{-$locale}` segment ("/" = FR, "/en" = EN).
@@ -11,8 +11,9 @@ export const NAV_ITEMS = [
   { key: "school", to: "/{-$locale}/ecole" },
   { key: "programs", to: "/{-$locale}/formations" },
   { key: "admissions", to: "/{-$locale}/admissions" },
-  { key: "news", to: "/{-$locale}/actualites" },
+  // { key: "news", to: "/{-$locale}/actualites" },
   { key: "contact", to: "/{-$locale}/contact" },
+  { key: "career", to: "/{-$locale}/career"},
 ] as const satisfies ReadonlyArray<{ key: NavKey; to: string }>;
 
 export type NavTo = (typeof NAV_ITEMS)[number]["to"];

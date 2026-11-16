@@ -11,8 +11,9 @@ export const en = {
     school: "Our school",
     programs: "Programs",
     admissions: "Admissions",
-    news: "News",
+    // news: "News",
     contact: "Contact",
+    career:"Career",
     menu: "Menu",
     language: "Language",
     parentsSpace: "Parent portal",
@@ -26,6 +27,8 @@ export const en = {
       admissionsDesc: "The steps to enroll your child with us.",
       fees:'Fees',
       feesDesc:'Discover the school fees at EIS',
+      news:'News',
+      newsDesc:'Events, academics and school life: all the latest from EGRA International School.',
       learnMore: "Discover the school where your children grow.",
       visit: "Visit the school",
     },
@@ -85,7 +88,7 @@ export const en = {
     cta: "See our programs",
     items: [
       {
-        name: "Preschool",
+        name: "maternelle",
         ages: "Ages 3 – 5",
         desc: "Discovery, play and first steps in French and English in a warm setting.",
       },
@@ -122,6 +125,9 @@ export const en = {
       events: "Events",
       academic: "Academics",
       life: "School life",
+      science:"Science",
+      technology:"Technology",
+      language:'Language'
     },
     items: newsItems([
       {
@@ -296,8 +302,8 @@ export const en = {
     subjectsLabel: "Subjects and activities",
     cycles: [
       {
-        id: "prescolaire",
-        name: "Preschool",
+        id: "maternelle",
+        name: "Kindergarten",
         ages: "Ages 3 – 5",
         classes: "Nursery, pre-K and kindergarten",
         intro:
@@ -424,7 +430,7 @@ export const en = {
     info: {
       title: "Contact details",
       address: "Address",
-      addressValue: "School address (to be completed)",
+      addressValue: "Coin boulevard Katumbi et contournement, Plateau Karavia",
       phone: "Phone",
       email: "Email",
       hours: "Office hours",
@@ -439,16 +445,16 @@ export const en = {
         message: "Ask us your question and we will reply as soon as possible.",
       },
       parentName: "Parent or guardian name",
-      parentNamePlaceholder: "Aminata Diallo",
+      parentNamePlaceholder: "Israel Besa",
       email: "Email",
       emailPlaceholder: "example@gmail.com",
       phone: "Phone",
       phonePlaceholder: "+221 77 123 45 67",
       childName: "Child's name",
-      childNamePlaceholder: "Moussa Diallo",
+      childNamePlaceholder: "Banza Monga",
       level: "Desired level",
       levelPlaceholder: "Choose a level",
-      levels: { prescolaire: "Preschool", primaire: "Primary", secondaire: "Secondary" },
+      levels: { maternelle: "Kindergarten", primaire: "Primary", secondaire: "Secondary" },
       message: "Message",
       messageOptional: "Message (optional)",
       messagePlaceholder: "Desired class, questions, availability for a visit…",
@@ -475,4 +481,27 @@ export const en = {
       },
     },
   },
+
+
+  careerPage:{
+    metaTitle: "Career at Egra International School",
+    metaDescription:
+      "Apply at Egra INternational School",
+    eyebrow: "Career",
+    title: "Want to be part of Egra International School's  family ?",
+    subtitle:
+      "Apply in one click, submit your Cv and cover letter and there you go !",
+    
+  },
+
+  feesPage:{
+    metaTitle: "School fees",
+    metaDescription:
+      "To get more information on the school fees, take a look on our school fees below",
+    eyebrow: "School Fees",
+    title: "School Fees",
+    subtitle:
+      "To get more information on the school fees, take a look on our school fees below",
+    
+  }
 } satisfies Dictionary;
