@@ -1,6 +1,7 @@
 const CDN = "https://hercules-cdn.com";
 import science_g from '../assets/science_g3.jpg';
 import science_g_2 from '../assets/science_g_2.jpg';
+import bookday from '../assets/book_day.jpg';
 
 export const site = {
   name: "EGRA International School",
@@ -24,5 +25,6 @@ export const site = {
     lab: science_g,
     lab1:"https://images.unsplash.com/photo-1758685734030-a31d96462eec?auto=format&fit=crop&w=1200&q=80",
     computers: "https://images.unsplash.com/photo-1778489769184-45868633c527?auto=format&fit=crop&w=1200&q=80",
+    bookday:bookday,
   },
 };

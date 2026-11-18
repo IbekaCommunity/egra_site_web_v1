@@ -145,7 +145,8 @@ export const fr = {
       life: "Vie scolaire",
       science:"Science",
       technology:"Technologie",
-      language:'Langue'
+      language:'Langue', 
+      
     },
     items: newsItems([
       {
@@ -218,6 +219,17 @@ export const fr = {
           "Le tournoi inter-classes a réuni les élèves du primaire et du secondaire autour du football et des courses de relais.",
           "Au-delà de la compétition, cette journée a mis en avant le respect, l'esprit d'équipe et le fair-play.",
           "Félicitations à toutes les équipes pour leur énergie et leur bonne humeur.",
+        ],
+      },
+      {
+        id: "book-day",
+        category: "events",
+        date: "2026-11-16",
+        title: "Cérémonie de vernissage",
+        desc: "Félicitations à tous nos élèves pour leurs efforts et leurs excellents résultats lors de la cérémonie de remise des prix.",
+        body: [
+          "D'un thème à un autre, d'un genre à un autre et d'une plume à une autre, les élèves de EIS ont se sont mis à l'épistolaire, usé leur plume afin d'égayer nos oreilles.",
+          "Découvrez nos livres dans notre bibliothèque virtuelle et physique."
         ],
       },
     ]),
@@ -564,7 +576,17 @@ export const fr = {
     subtitle:
       "Decouvrez la liste de tous les frais scolaires au sein de notre etablissement!",
     
-  }
+  },
+
+  jobsPage: {
+    metaTitle: "Offres d'emploi",
+    metaDescription:
+      "Découvrez la liste des offres d'emploi disponibles au sein de notre établissement et postulez en ligne.",
+    eyebrow: "Rejoignez-nous",
+    title: "Offres d'emploi",
+    subtitle:
+      "Découvrez toutes nos opportunités de carrière et postulez directement en ligne.",
+  },
 };
 
 export type Dictionary = typeof fr;

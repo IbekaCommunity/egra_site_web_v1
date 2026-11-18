@@ -35,7 +35,7 @@ export default function NewsArticleDialog({
                 </span>
               </div>
               <DialogTitle className="font-display text-2xl leading-tight font-extrabold text-primary md:text-3xl">
-                {item.title}
+                {item.title} 
               </DialogTitle>
               {item.body.map((p) => (
                 <p key={p} className="leading-relaxed text-muted-foreground">

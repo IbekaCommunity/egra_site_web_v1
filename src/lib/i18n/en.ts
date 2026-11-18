@@ -202,6 +202,17 @@ export const en = {
           "Congratulations to every team for their energy and enthusiasm.",
         ],
       },
+      {
+        id: "book-day",
+        category: "events",
+        date: "2026-11-16",
+        title: "Cérémonie de vernissage",
+        desc: "Félicitations à tous nos élèves pour leurs efforts et leurs excellents résultats lors de la cérémonie de remise des prix.",
+        body: [
+          "D'un thème à un autre, d'un genre à un autre et d'une plume à une autre, les élèves de EIS ont se sont mis à l'épistolaire, usé leur plume afin d'égayer nos oreilles.",
+          "Découvrez nos livres dans notre bibliothèque virtuelle et physique."
+        ],
+      },
     ]),
   },
   newsPage: {
@@ -545,5 +556,19 @@ export const en = {
     subtitle:
       "To get more information on the school fees, take a look on our school fees below",
     
-  }
+  },
+
+  jobsPage: {
+    metaTitle: "Job Openings",
+    metaDescription:
+      "Browse the list of job openings available at our school and apply online.",
+    eyebrow: "Join us",
+    title: "Job Openings",
+    subtitle:
+      "Explore all our career opportunities and apply directly online.",
+  },
+
+
+
+
 } satisfies Dictionary;

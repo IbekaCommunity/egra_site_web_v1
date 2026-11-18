@@ -1,14 +1,28 @@
-import { useState,useEffect } from 'react';
+
+
+import { useState, useEffect } from 'react';
 import PageHero from '#/components/page-hero';
 import { Button } from '#/components/ui/button';
 import { useT } from '#/hooks/use-locale';
 import { getDictionary, langFromParam } from '#/lib/i18n';
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { createServerFn } from '@tanstack/react-start';
-import { z } from 'zod'; 
+import { z } from 'zod';
 
 // ---------- Server Function ----------
 const ID_TYPES = ['carte_electeur', 'passeport', 'permis_conduire'] as const;
+
+type User = {
+  nom: string;
+  gender: string;
+  phone: string;
+};
+
+type ApiResponse = {
+  success: boolean;
+  message: string;
+  data: User;
+};
 
 const applicationSchema = z.object({
   fullName: z.string().min(2, 'Nom complet requis'),
@@ -84,55 +98,48 @@ export const Route = createFileRoute('/{-$locale}/career')({
       ],
     };
   },
+  // sk_test_Jsm9MrPHYAb3K2j8Nm6E6L3gCbUlFdd9pc2NBwBmhpI
+
+  
+
+  loader: async () => {
+    const res = await fetch('http://localhost/mon-app/school_api/v.1/index.php');
+    if (!res.ok) throw new Error('Erreur de chargement');
+    const users: ApiResponse = await res.json();
+    return { users, openJobs: 12, closedJobs: 34 };
+  },
   component: CareerPage,
 });
 
- 
+// ---------- Types ----------
+type StepId = 1 | 2 | 3 | 4;
 
+type JobsStats = {
+  openJobs: number;
+  closedJobs: number; 
+};
 
-
+// ---------- Composant ----------
 function CareerPage() {
   const t = useT().careerPage;
+  const { openJobs, closedJobs } = Route.useLoaderData() as JobsStats; 
+  const {users} = Route.useLoaderData();// Remplacez 'any' par le type approprié si vous connaissez la structure des utilisateurs
+
+  // on parse maintenant la liste des users
+  const user = users.data;
+
+  console.log(users);
+
   const STEPS = [
     { id: 1 as const, label: t.form.wizard.identity },
     { id: 2 as const, label: t.form.wizard.identityCard },
     { id: 3 as const, label: t.form.wizard.profile },
     { id: 4 as const, label: t.form.wizard.documents },
   ];
-  
-  type StepId = (typeof STEPS)[number]['id'];
+
   const [step, setStep] = useState<StepId>(1);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
-
-
- 
- 
-
-
- // ✅ Fetch avec gestion d'erreur + abort
-  useEffect(() => {
-    const controller = new AbortController();
-
-    async function fetchR() {
-      try {
-        const resp = await fetch('http://localhost/mon-app/school_api/v.1/index.php', {
-          method: 'GET',
-          signal: controller.signal,
-        });
-        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-        const data = await resp.json();
-        console.log('API response:', data);
-      } catch (err) {
-        if (err instanceof DOMException && err.name === 'AbortError') return;
-        console.error('Fetch failed:', err);
-        console.log(err);
-      }
-    }
-
-    void fetchR();
-    return () => controller.abort();
-  }, []);
 
   
 
@@ -142,28 +149,26 @@ function CareerPage() {
 
   function validateStep(current: StepId, form: HTMLFormElement): string | null {
     if (current === 1) {
-      if (getField(form, 'fullName').trim().length < 2) return  t.form.error.fullname;
+      if (getField(form, 'fullName').trim().length < 2) return t.form.error.fullname;
       const email = getField(form, 'email').trim();
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return t.form.error.email;
-      if (getField(form, 'phone').trim().length < 6) return  t.form.error.phone;
+      if (getField(form, 'phone').trim().length < 6) return t.form.error.phone;
     }
     if (current === 2) {
-      if (!getField(form, 'idType')) return  t.form.error.idType;
-      if (getField(form, 'idNumber').trim().length < 4) return  t.form.error.idNumber;
+      if (!getField(form, 'idType')) return t.form.error.idType;
+      if (getField(form, 'idNumber').trim().length < 4) return t.form.error.idNumber;
     }
     if (current === 3) {
       const photo = form.elements.namedItem('photo') as HTMLInputElement | null;
-      if (!photo?.files?.length) return  t.form.error.profilePhoto;
+      if (!photo?.files?.length) return t.form.error.profilePhoto;
       if (!photo.files[0].type.startsWith('image/')) return t.form.error.profilePhotoType;
       if (photo.files[0].size > 2 * 1024 * 1024) return t.form.error.profilePhotoSize;
-      if (getField(form, 'profileFr').trim().length < 20)
-        return t.form.error.profileFr;
-      if (getField(form, 'profileEn').trim().length < 20)
-        return t.form.profileEn;
+      if (getField(form, 'profileFr').trim().length < 20) return t.form.error.profileFr;
+      if (getField(form, 'profileEn').trim().length < 20) return t.form.error.profileEn;
     }
     if (current === 4) {
       const cv = form.elements.namedItem('cv') as HTMLInputElement | null;
-      if (!cv?.files?.length) return t,form.error.cvRequired;
+      if (!cv?.files?.length) return t.form.error.cvRequired;
       if (cv.files[0].size > 5 * 1024 * 1024) return t.form.error.CvFileSize;
       const cl = form.elements.namedItem('coverLetter') as HTMLInputElement | null;
       if (cl?.files?.length && cl.files[0].size > 5 * 1024 * 1024)
@@ -215,7 +220,44 @@ function CareerPage() {
     <>
       <PageHero eyebrow={t.eyebrow} title={t.title} subtitle={t.subtitle} />
 
-      <section className="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:px-6 md:py-24 lg:grid-cols-[1fr_1.6fr]">
+      {/* ---------- Toolbar : stats + lien vers les offres ---------- */}
+      <section className="mx-auto max-w-7xl px-4 pt-10 md:px-6">
+        <div className="flex flex-col gap-4 rounded-2xl border bg-card p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-wrap items-center gap-3">
+            {/* Offres en cours */}
+            <div className="flex items-center gap-2 rounded-xl bg-emerald-50 px-4 py-2 dark:bg-emerald-950/40">
+              <span className="relative flex h-3 w-3">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-500" />
+              </span>
+              <div>
+                <p className="text-xs text-emerald-700 dark:text-emerald-300">Offres en cours</p>
+                <p className="text-lg font-bold leading-none text-emerald-800 dark:text-emerald-200">
+                  {openJobs}
+                </p>
+              </div>
+            </div>
+
+            {/* Offres terminées */}
+            <div className="flex items-center gap-2 rounded-xl bg-muted px-4 py-2">
+              <span className="inline-flex h-3 w-3 rounded-full bg-muted-foreground/50" />
+              <div>
+                <p className="text-xs text-muted-foreground">Offres terminées</p>
+                <p className="text-lg font-bold leading-none text-foreground">{closedJobs}</p>
+              </div>
+            </div>
+          </div>
+
+          <Button asChild variant="outline" className="self-start sm:self-auto">
+            <Link to="/{-$locale}/jobs" params={{ locale: undefined }}>
+              Voir toutes les offres d’emploi
+              <span aria-hidden="true" className="ml-2">→</span>
+            </Link>
+          </Button>
+        </div>
+      </section>
+
+      <section className="mx-auto grid max-w-7xl gap-10 px-4 py-10 md:px-6 md:py-16 lg:grid-cols-[1fr_1.6fr]">
         {/* ---------- Colonne gauche : instructions ---------- */}
         <aside className="lg:sticky lg:top-24 lg:self-start">
           <div className="rounded-2xl border bg-card p-6 shadow-sm">
@@ -252,6 +294,22 @@ function CareerPage() {
         {/* ---------- Colonne droite : wizard ---------- */}
         <div className="rounded-2xl border bg-card p-6 shadow-sm md:p-10">
           {/* Indicateur d'étapes */}
+
+          <table>
+            <thead>
+              <tr>
+                <th>Test</th>
+              </tr>
+            </thead>
+            <tbody>
+              {user.map((m) => (
+                <tr>
+                  <td>{m.nom}</td>
+                </tr>
+              ))}
+              
+            </tbody>
+          </table>
           <div className="mb-8 flex items-center justify-between">
             {STEPS.map((s, i) => {
               const active = step === s.id;
@@ -368,7 +426,7 @@ function CareerPage() {
                 <input id="coverLetter" name="coverLetter" type="file" accept=".pdf,.doc,.docx" className="w-full rounded-md border bg-background px-3 py-2 text-sm file:mr-3 file:rounded file:border-0 file:bg-muted file:px-3 file:py-1 file:text-sm" />
               </div>
               <p className="text-xs text-muted-foreground">
-                 {t.form.wizard.politic}
+                {t.form.wizard.politic}
               </p>
             </div>
 

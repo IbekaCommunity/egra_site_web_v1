@@ -9,6 +9,7 @@ const NEWS_IMAGE_BY_ID: Record<string, string> = {
   "journee-culturelle": site.images.celebration,
   "conference-orientation": site.images.computers,
   "tournoi-sportif": site.images.sport,
+  "book-day":site.images.bookday,
 };
 
 export function newsImage(item: NewsItem): string {

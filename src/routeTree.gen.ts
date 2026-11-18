@@ -15,10 +15,14 @@ import { Route as Char123LocaleChar125IndexRouteImport } from './routes/{-$local
 import { Route as Char123LocaleChar125ActualitesRouteImport } from './routes/{-$locale}/actualites'
 import { Route as Char123LocaleChar125AdmissionsRouteImport } from './routes/{-$locale}/admissions'
 import { Route as Char123LocaleChar125CareerRouteImport } from './routes/{-$locale}/career'
+import { Route as Char123LocaleChar125CareerOffersRouteImport } from './routes/{-$locale}/career-offers'
 import { Route as Char123LocaleChar125ContactRouteImport } from './routes/{-$locale}/contact'
 import { Route as Char123LocaleChar125EcoleRouteImport } from './routes/{-$locale}/ecole'
 import { Route as Char123LocaleChar125FeesRouteImport } from './routes/{-$locale}/fees'
 import { Route as Char123LocaleChar125FormationsRouteImport } from './routes/{-$locale}/formations'
+import { Route as Char123LocaleChar125JobsRouteImport } from './routes/{-$locale}/jobs'
+import { Route as Char123LocaleChar125UsersRouteImport } from './routes/{-$locale}/users'
+import { Route as Char123LocaleChar125JobsJobIdRouteImport } from './routes/{-$locale}/jobs/$jobId'
 
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
@@ -55,6 +59,12 @@ const Char123LocaleChar125CareerRoute =
     path: '/career',
     getParentRoute: () => Char123LocaleChar125RouteRoute,
   } as any)
+const Char123LocaleChar125CareerOffersRoute =
+  Char123LocaleChar125CareerOffersRouteImport.update({
+    id: '/career-offers',
+    path: '/career-offers',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
 const Char123LocaleChar125ContactRoute =
   Char123LocaleChar125ContactRouteImport.update({
     id: '/contact',
@@ -79,6 +89,24 @@ const Char123LocaleChar125FormationsRoute =
     path: '/formations',
     getParentRoute: () => Char123LocaleChar125RouteRoute,
   } as any)
+const Char123LocaleChar125JobsRoute =
+  Char123LocaleChar125JobsRouteImport.update({
+    id: '/jobs',
+    path: '/jobs',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125UsersRoute =
+  Char123LocaleChar125UsersRouteImport.update({
+    id: '/users',
+    path: '/users',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125JobsJobIdRoute =
+  Char123LocaleChar125JobsJobIdRouteImport.update({
+    id: '/$jobId',
+    path: '/$jobId',
+    getParentRoute: () => Char123LocaleChar125JobsRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/{-$locale}': typeof Char123LocaleChar125RouteRouteWithChildren
@@ -86,22 +114,30 @@ export interface FileRoutesByFullPath {
   '/{-$locale}/actualites': typeof Char123LocaleChar125ActualitesRoute
   '/{-$locale}/admissions': typeof Char123LocaleChar125AdmissionsRoute
   '/{-$locale}/career': typeof Char123LocaleChar125CareerRoute
+  '/{-$locale}/career-offers': typeof Char123LocaleChar125CareerOffersRoute
   '/{-$locale}/contact': typeof Char123LocaleChar125ContactRoute
   '/{-$locale}/ecole': typeof Char123LocaleChar125EcoleRoute
   '/{-$locale}/fees': typeof Char123LocaleChar125FeesRoute
   '/{-$locale}/formations': typeof Char123LocaleChar125FormationsRoute
+  '/{-$locale}/jobs': typeof Char123LocaleChar125JobsRouteWithChildren
+  '/{-$locale}/users': typeof Char123LocaleChar125UsersRoute
   '/{-$locale}/': typeof Char123LocaleChar125IndexRoute
+  '/{-$locale}/jobs/$jobId': typeof Char123LocaleChar125JobsJobIdRoute
 }
 export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/{-$locale}/actualites': typeof Char123LocaleChar125ActualitesRoute
   '/{-$locale}/admissions': typeof Char123LocaleChar125AdmissionsRoute
   '/{-$locale}/career': typeof Char123LocaleChar125CareerRoute
+  '/{-$locale}/career-offers': typeof Char123LocaleChar125CareerOffersRoute
   '/{-$locale}/contact': typeof Char123LocaleChar125ContactRoute
   '/{-$locale}/ecole': typeof Char123LocaleChar125EcoleRoute
   '/{-$locale}/fees': typeof Char123LocaleChar125FeesRoute
   '/{-$locale}/formations': typeof Char123LocaleChar125FormationsRoute
+  '/{-$locale}/jobs': typeof Char123LocaleChar125JobsRouteWithChildren
+  '/{-$locale}/users': typeof Char123LocaleChar125UsersRoute
   '/{-$locale}': typeof Char123LocaleChar125IndexRoute
+  '/{-$locale}/jobs/$jobId': typeof Char123LocaleChar125JobsJobIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -110,11 +146,15 @@ export interface FileRoutesById {
   '/{-$locale}/actualites': typeof Char123LocaleChar125ActualitesRoute
   '/{-$locale}/admissions': typeof Char123LocaleChar125AdmissionsRoute
   '/{-$locale}/career': typeof Char123LocaleChar125CareerRoute
+  '/{-$locale}/career-offers': typeof Char123LocaleChar125CareerOffersRoute
   '/{-$locale}/contact': typeof Char123LocaleChar125ContactRoute
   '/{-$locale}/ecole': typeof Char123LocaleChar125EcoleRoute
   '/{-$locale}/fees': typeof Char123LocaleChar125FeesRoute
   '/{-$locale}/formations': typeof Char123LocaleChar125FormationsRoute
+  '/{-$locale}/jobs': typeof Char123LocaleChar125JobsRouteWithChildren
+  '/{-$locale}/users': typeof Char123LocaleChar125UsersRoute
   '/{-$locale}/': typeof Char123LocaleChar125IndexRoute
+  '/{-$locale}/jobs/$jobId': typeof Char123LocaleChar125JobsJobIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -124,22 +164,30 @@ export interface FileRouteTypes {
     | '/{-$locale}/actualites'
     | '/{-$locale}/admissions'
     | '/{-$locale}/career'
+    | '/{-$locale}/career-offers'
     | '/{-$locale}/contact'
     | '/{-$locale}/ecole'
     | '/{-$locale}/fees'
     | '/{-$locale}/formations'
+    | '/{-$locale}/jobs'
+    | '/{-$locale}/users'
     | '/{-$locale}/'
+    | '/{-$locale}/jobs/$jobId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/about'
     | '/{-$locale}/actualites'
     | '/{-$locale}/admissions'
     | '/{-$locale}/career'
+    | '/{-$locale}/career-offers'
     | '/{-$locale}/contact'
     | '/{-$locale}/ecole'
     | '/{-$locale}/fees'
     | '/{-$locale}/formations'
+    | '/{-$locale}/jobs'
+    | '/{-$locale}/users'
     | '/{-$locale}'
+    | '/{-$locale}/jobs/$jobId'
   id:
     | '__root__'
     | '/{-$locale}'
@@ -147,11 +195,15 @@ export interface FileRouteTypes {
     | '/{-$locale}/actualites'
     | '/{-$locale}/admissions'
     | '/{-$locale}/career'
+    | '/{-$locale}/career-offers'
     | '/{-$locale}/contact'
     | '/{-$locale}/ecole'
     | '/{-$locale}/fees'
     | '/{-$locale}/formations'
+    | '/{-$locale}/jobs'
+    | '/{-$locale}/users'
     | '/{-$locale}/'
+    | '/{-$locale}/jobs/$jobId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -203,6 +255,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char123LocaleChar125CareerRouteImport
       parentRoute: typeof Char123LocaleChar125RouteRoute
     }
+    '/{-$locale}/career-offers': {
+      id: '/{-$locale}/career-offers'
+      path: '/career-offers'
+      fullPath: '/{-$locale}/career-offers'
+      preLoaderRoute: typeof Char123LocaleChar125CareerOffersRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
     '/{-$locale}/contact': {
       id: '/{-$locale}/contact'
       path: '/contact'
@@ -231,17 +290,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char123LocaleChar125FormationsRouteImport
       parentRoute: typeof Char123LocaleChar125RouteRoute
     }
+    '/{-$locale}/jobs': {
+      id: '/{-$locale}/jobs'
+      path: '/jobs'
+      fullPath: '/{-$locale}/jobs'
+      preLoaderRoute: typeof Char123LocaleChar125JobsRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/users': {
+      id: '/{-$locale}/users'
+      path: '/users'
+      fullPath: '/{-$locale}/users'
+      preLoaderRoute: typeof Char123LocaleChar125UsersRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/jobs/$jobId': {
+      id: '/{-$locale}/jobs/$jobId'
+      path: '/$jobId'
+      fullPath: '/{-$locale}/jobs/$jobId'
+      preLoaderRoute: typeof Char123LocaleChar125JobsJobIdRouteImport
+      parentRoute: typeof Char123LocaleChar125JobsRoute
+    }
   }
 }
+
+interface Char123LocaleChar125JobsRouteChildren {
+  Char123LocaleChar125JobsJobIdRoute: typeof Char123LocaleChar125JobsJobIdRoute
+}
+
+const Char123LocaleChar125JobsRouteChildren: Char123LocaleChar125JobsRouteChildren =
+  {
+    Char123LocaleChar125JobsJobIdRoute: Char123LocaleChar125JobsJobIdRoute,
+  }
+
+const Char123LocaleChar125JobsRouteWithChildren =
+  Char123LocaleChar125JobsRoute._addFileChildren(
+    Char123LocaleChar125JobsRouteChildren,
+  )
 
 interface Char123LocaleChar125RouteRouteChildren {
   Char123LocaleChar125ActualitesRoute: typeof Char123LocaleChar125ActualitesRoute
   Char123LocaleChar125AdmissionsRoute: typeof Char123LocaleChar125AdmissionsRoute
   Char123LocaleChar125CareerRoute: typeof Char123LocaleChar125CareerRoute
+  Char123LocaleChar125CareerOffersRoute: typeof Char123LocaleChar125CareerOffersRoute
   Char123LocaleChar125ContactRoute: typeof Char123LocaleChar125ContactRoute
   Char123LocaleChar125EcoleRoute: typeof Char123LocaleChar125EcoleRoute
   Char123LocaleChar125FeesRoute: typeof Char123LocaleChar125FeesRoute
   Char123LocaleChar125FormationsRoute: typeof Char123LocaleChar125FormationsRoute
+  Char123LocaleChar125JobsRoute: typeof Char123LocaleChar125JobsRouteWithChildren
+  Char123LocaleChar125UsersRoute: typeof Char123LocaleChar125UsersRoute
   Char123LocaleChar125IndexRoute: typeof Char123LocaleChar125IndexRoute
 }
 
@@ -250,10 +347,14 @@ const Char123LocaleChar125RouteRouteChildren: Char123LocaleChar125RouteRouteChil
     Char123LocaleChar125ActualitesRoute: Char123LocaleChar125ActualitesRoute,
     Char123LocaleChar125AdmissionsRoute: Char123LocaleChar125AdmissionsRoute,
     Char123LocaleChar125CareerRoute: Char123LocaleChar125CareerRoute,
+    Char123LocaleChar125CareerOffersRoute:
+      Char123LocaleChar125CareerOffersRoute,
     Char123LocaleChar125ContactRoute: Char123LocaleChar125ContactRoute,
     Char123LocaleChar125EcoleRoute: Char123LocaleChar125EcoleRoute,
     Char123LocaleChar125FeesRoute: Char123LocaleChar125FeesRoute,
     Char123LocaleChar125FormationsRoute: Char123LocaleChar125FormationsRoute,
+    Char123LocaleChar125JobsRoute: Char123LocaleChar125JobsRouteWithChildren,
+    Char123LocaleChar125UsersRoute: Char123LocaleChar125UsersRoute,
     Char123LocaleChar125IndexRoute: Char123LocaleChar125IndexRoute,
   }
 
