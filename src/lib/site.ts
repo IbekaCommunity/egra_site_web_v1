@@ -7,7 +7,7 @@ export const site = {
   name: "EGRA International School",
   tagline: "Think Global, Learn Local",
   // External parents dashboard (hosted on another domain).
-  parentPortalUrl: "http://localhost:4026/parents/portal/auth/get-started/login",
+  parentPortalUrl: "https://smart-akademia.egrainternationalschool.com/parents/portal/auth/get-started/login",
   logo: `${CDN}/file_6elVfeocWAVM8nY5tGAVklOw`,
   // Placeholder contact details until the school confirms the real ones.
   contact: {
