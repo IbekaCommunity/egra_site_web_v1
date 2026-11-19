@@ -102,12 +102,12 @@ export const Route = createFileRoute('/{-$locale}/career')({
 
   
 
-  // loader: async () => {
-  //   const res = await fetch('http://localhost/mon-app/school_api/v.1/index.php');
-  //   if (!res.ok) throw new Error('Erreur de chargement');
-  //   const users: ApiResponse = await res.json();
-  //   return { users, openJobs: 12, closedJobs: 34 };
-  // },
+  loader: async () => {
+    // const res = await fetch('http://localhost/mon-app/school_api/v.1/index.php');
+    // if (!res.ok) throw new Error('Erreur de chargement');
+    // const users: ApiResponse = await res.json();
+    return {openJobs: 12, closedJobs: 34 };
+  },
   component: CareerPage,
 });
 
