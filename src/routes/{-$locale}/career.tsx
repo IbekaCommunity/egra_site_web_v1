@@ -102,12 +102,12 @@ export const Route = createFileRoute('/{-$locale}/career')({
 
   
 
-  loader: async () => {
-    const res = await fetch('http://localhost/mon-app/school_api/v.1/index.php');
-    if (!res.ok) throw new Error('Erreur de chargement');
-    const users: ApiResponse = await res.json();
-    return { users, openJobs: 12, closedJobs: 34 };
-  },
+  // loader: async () => {
+  //   const res = await fetch('http://localhost/mon-app/school_api/v.1/index.php');
+  //   if (!res.ok) throw new Error('Erreur de chargement');
+  //   const users: ApiResponse = await res.json();
+  //   return { users, openJobs: 12, closedJobs: 34 };
+  // },
   component: CareerPage,
 });
 
@@ -123,12 +123,12 @@ type JobsStats = {
 function CareerPage() {
   const t = useT().careerPage;
   const { openJobs, closedJobs } = Route.useLoaderData() as JobsStats; 
-  const {users} = Route.useLoaderData();// Remplacez 'any' par le type approprié si vous connaissez la structure des utilisateurs
+  // const {users} = Route.useLoaderData();// Remplacez 'any' par le type approprié si vous connaissez la structure des utilisateurs
 
-  // on parse maintenant la liste des users
-  const user = users.data;
+  // // on parse maintenant la liste des users
+  // const user = users.data;
 
-  console.log(users);
+  // console.log(users);
 
   const STEPS = [
     { id: 1 as const, label: t.form.wizard.identity },
@@ -295,7 +295,7 @@ function CareerPage() {
         <div className="rounded-2xl border bg-card p-6 shadow-sm md:p-10">
           {/* Indicateur d'étapes */}
 
-          <table>
+          {/* <table>
             <thead>
               <tr>
                 <th>Test</th>
@@ -309,7 +309,7 @@ function CareerPage() {
               ))}
               
             </tbody>
-          </table>
+          </table> */}
           <div className="mb-8 flex items-center justify-between">
             {STEPS.map((s, i) => {
               const active = step === s.id;
